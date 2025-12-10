@@ -1,2 +1,2 @@
 # EQrateinv
-programs to calculate rates of earthquake scenarios on faults, using their slip rates
+programs to calculate rates of earthquake scenarios on faults, using their slip rates. See Frankel, A. (2026) Solving for earthquake recurrence rates from fault slip rates in a muli-segment, multi-fault rupture system: an overdetermined inversion approach, Seismologiocal Research Letters. Code rateinvflt.f uses a singel fault. Compiled with nnls, a non negative least squares code. Used gfortran to compile. 
