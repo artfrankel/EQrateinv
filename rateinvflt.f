@@ -7,18 +7,21 @@ c--- written By Art Frankel April-Sept 2025.
 c  solving for rate for nucleation on each segment j that ruptures through segment i
 c--- data are slip rates on segment i
 c--- uses slip tapers
+c  complile with gfortran -ffixed-line-length-128 -o rateinv rateinv.f nnls.f
+c--- make sure dimension statements in nnls.f are consitent with rateinvflt
 c---- uses non-negative least squares subroutine nnls.f from Hanson and Lawson
 c-----(1974). Solving Least Squares Problems, Prentice Hall
 c---  c(mm)= jump probability of segment boundary mm
 c---- find probs of all possible scenarios
 c--- prob(i,j) = prob of scenario j that starts at segment i 
+c--- oiutput files:   rateinvflt.out, fort.2, fort.3
       dimension a(40,20),atmp(40,20),a2(40,20),c(20),xlen0(20),pred(20)
       dimension xlen(20,20),prob(20,500),sliprate(20),slip(500)
       dimension b(40),x(40),w(40),zz(40),index(40),xmag(500)
       dimension indsc(20,20,500),rate(20),rate2(500)
       dimension x2(20),pred2(20),sumbin(40),xmag2(40)
       dimension istart(500),iend(500)
-      open(unit=10,file='rateinvxtap2.out',status='old')
+      open(unit=10,file='rateinvflt.out',status='old')
 c---- has 20 segments;  user can change
       mm= 20
       nn=20
@@ -29,6 +32,11 @@ c--- facsm is smoothing factor
       write(6,*) "enter jump prob, jump prob at iseg 10,facsm"
 c--- user can specify different jumping probs for each segment boundary
       read(5,*) c0,c10,facsm
+c  sample inputs
+c   0.5 0.5 1000
+c   0.7 0.7 2000
+c   0.9 0.9 3000
+c   0.95 9.95 5000
       xlentot= 20.*mm
       xlentemp= 0.
       totmo= 0.
