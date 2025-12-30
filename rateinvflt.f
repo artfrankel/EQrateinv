@@ -7,8 +7,8 @@ c--- written By Art Frankel April-Sept 2025.
 c  solving for rate for nucleation on each segment j that ruptures through segment i
 c--- data are slip rates on segment i
 c--- uses slip tapers
-c  complile with gfortran -ffixed-line-length-128 -o rateinv rateinv.f nnls.f
-c--- make sure dimension statements in nnls.f are consitent with rateinvflt
+c  complile with gfortran -ffixed-line-length-128 -o rateinvflt rateinvflt.f nnls.f
+c--- make sure dimension statements in nnls.f are consitent with rateinvflt.f
 c---- uses non-negative least squares subroutine nnls.f from Hanson and Lawson
 c-----(1974). Solving Least Squares Problems, Prentice Hall
 c---  c(mm)= jump probability of segment boundary mm
